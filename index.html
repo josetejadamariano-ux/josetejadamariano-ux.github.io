@@ -8,340 +8,250 @@
 <meta name="color-scheme" content="light dark">
 <style>
   :root{
-    --ink:#12202B;
-    --paper:#F4F5F1;
-    --card:#FFFFFF;
-    --muted:#5B6670;
-    --line:#DEDFD8;
-    --accent:#1F6F5C;
-    --accent2:#B8792B;
+    --ink:#1A1A1A;
+    --paper:#FFFFFF;
+    --muted:#5B5B5B;
+    --line:#D6D6D6;
+    --accent:#1F3A5F;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --ink:#ECEEE8;
-      --paper:#0E161C;
-      --card:#141E27;
-      --muted:#9AA6AC;
-      --line:#25313B;
-      --accent:#4FB79E;
-      --accent2:#D9A24E;
+      --ink:#EDEDED;
+      --paper:#121212;
+      --muted:#A3A3A3;
+      --line:#333333;
+      --accent:#7FA0C9;
     }
   }
   :root[data-theme="dark"]{
-    --ink:#ECEEE8;
-    --paper:#0E161C;
-    --card:#141E27;
-    --muted:#9AA6AC;
-    --line:#25313B;
-    --accent:#4FB79E;
-    --accent2:#D9A24E;
+    --ink:#EDEDED;
+    --paper:#121212;
+    --muted:#A3A3A3;
+    --line:#333333;
+    --accent:#7FA0C9;
   }
 
   *{box-sizing:border-box}
   body{
     background:var(--paper);
     color:var(--ink);
-    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    line-height:1.55;
+    font-family:"Source Sans 3",Calibri,"Segoe UI",Arial,sans-serif;
+    line-height:1.5;
     padding:0 20px;
+    font-size:15.5px;
   }
-  .wrap{max-width:740px;margin:0 auto}
-
-  .eyebrow{
-    font-family:"IBM Plex Mono",ui-monospace,monospace;
-    font-size:12px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--accent);
-  }
-
-  h1,h2,h3{
-    font-family:"Fraunces",Georgia,"Times New Roman",serif;
-    font-weight:600;
-    text-wrap:balance;
-    margin:0;
-  }
+  .wrap{max-width:700px;margin:0 auto}
 
   a{color:var(--accent)}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  h1{font-size:26px;font-weight:700;margin:0}
+  h2{
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    margin:0 0 12px;
+    padding-bottom:4px;
+    border-bottom:1.5px solid var(--ink);
+  }
 
   /* ---------- header ---------- */
   header{
-    padding:56px 0 40px;
-    border-bottom:1px solid var(--line);
+    padding:44px 0 28px;
     display:flex;
-    align-items:flex-start;
-    gap:28px;
+    align-items:center;
+    gap:22px;
+    text-align:left;
   }
   .headshot{
-    width:92px;
-    height:92px;
-    border-radius:50%;
+    width:82px;
+    height:82px;
+    border-radius:6px;
     object-fit:cover;
     flex:none;
     border:1px solid var(--line);
   }
-  .header-text{min-width:0}
-  header h1{font-size:clamp(28px,5.4vw,42px);letter-spacing:-.01em}
-  .role{
-    margin-top:6px;
-    font-size:17px;
+  .contact{
+    margin-top:5px;
+    font-size:14px;
     color:var(--muted);
   }
-  .role b{color:var(--ink);font-weight:600}
-  .contact-row{
-    margin-top:22px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
+  .contact a{color:var(--muted);text-decoration:underline}
+  .role{
+    margin-top:2px;
+    font-size:14.5px;
+    color:var(--muted);
   }
-  @media (max-width:560px){
-    header{flex-direction:column;gap:18px}
-  }
-  .pill{
-    font-family:"IBM Plex Mono",ui-monospace,monospace;
-    font-size:12.5px;
-    letter-spacing:.02em;
-    color:var(--ink);
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:999px;
-    padding:7px 14px;
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-  }
-  .pill:hover{border-color:var(--accent)}
-  .pill svg{width:13px;height:13px;flex:none}
 
   /* ---------- sections ---------- */
-  section{padding:40px 0}
+  section{padding:26px 0}
   section + section{border-top:1px solid var(--line)}
-  section > .eyebrow{margin-bottom:14px}
 
-  .about p{
-    font-size:16px;
-    max-width:62ch;
-  }
-  .about p + p{margin-top:14px}
+  .about p{margin:0 0 10px;max-width:64ch}
+  .about p:last-child{margin-bottom:0}
 
-  /* ---------- timeline ---------- */
-  .tl-item{
-    display:grid;
-    grid-template-columns:118px 1fr;
-    gap:20px;
-    padding:18px 0;
-  }
-  .tl-item + .tl-item{border-top:1px dashed var(--line)}
-  .tl-date{
-    font-family:"IBM Plex Mono",ui-monospace,monospace;
-    font-size:12px;
-    color:var(--muted);
-    padding-top:3px;
-    font-variant-numeric:tabular-nums;
-  }
-  .tl-org{
-    font-family:"Fraunces",Georgia,serif;
-    font-weight:600;
-    font-size:18px;
-  }
-  .tl-loc{color:var(--muted);font-weight:400;font-size:14px}
-  .tl-role{
-    font-size:14.5px;
-    color:var(--accent);
-    margin-top:2px;
-    font-weight:600;
-  }
-  .tl-item ul{
-    margin:10px 0 0;
-    padding-left:18px;
-    font-size:15px;
-  }
-  .tl-item li + li{margin-top:6px}
-
-  @media (max-width:560px){
-    .tl-item{grid-template-columns:1fr;gap:4px}
-    .tl-date{padding-top:0}
-  }
-
-  /* ---------- involvement grid ---------- */
-  .inv-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-  }
-  @media (max-width:560px){ .inv-grid{grid-template-columns:1fr} }
-  .inv-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:16px 18px;
-  }
-  .inv-card .tag{
-    display:inline-block;
-    font-family:"IBM Plex Mono",monospace;
-    font-size:11px;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    color:var(--accent2);
-    border:1px solid var(--accent2);
-    border-radius:999px;
-    padding:2px 9px;
-    margin-bottom:8px;
-  }
-  .inv-card h3{font-size:16px;font-weight:600}
-  .inv-card .sub{font-size:13px;color:var(--muted);margin-top:2px}
-  .inv-card p{font-size:14px;margin-top:8px}
-
-  /* ---------- skills ---------- */
-  .skill-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;font-size:14.5px}
-  .skill-row + .skill-row{border-top:1px solid var(--line)}
-  .skill-row span:first-child{color:var(--muted);flex:none;width:150px}
-
-  /* ---------- footer ---------- */
-  footer{
-    padding:36px 0 64px;
-    font-size:13px;
-    color:var(--muted);
+  /* ---------- entries (resume-style) ---------- */
+  .entry{padding:12px 0}
+  .entry + .entry{border-top:1px solid var(--line)}
+  .entry-row{
     display:flex;
     justify-content:space-between;
+    gap:12px;
     flex-wrap:wrap;
-    gap:10px;
+  }
+  .entry-org{font-weight:700}
+  .entry-loc,.entry-date{color:var(--muted);font-size:14px;white-space:nowrap}
+  .entry-role{font-style:italic;margin-top:1px}
+  .entry ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}
+  .entry li + li{margin-top:5px}
+
+  /* ---------- skills ---------- */
+  .fact{display:flex;gap:14px;padding:6px 0;font-size:14.5px}
+  .fact dt{flex:none;width:130px;color:var(--muted)}
+  .fact dd{margin:0}
+
+  footer{
+    padding:30px 0 60px;
+    font-size:13px;
+    color:var(--muted);
   }
 </style>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <div class="wrap">
 
   <header>
-    <img class="headshot" src="img/headshot.jpg" alt="José Mariano Tejada Castillo" width="92" height="92">
-    <div class="header-text">
-      <div class="eyebrow">New York, NY</div>
+    <img class="headshot" src="img/headshot.jpg" alt="José Mariano Tejada Castillo" width="82" height="82">
+    <div>
       <h1>José Mariano Tejada Castillo</h1>
-      <p class="role">
-        <b>Business Operations &amp; Project Management</b> — M.S. Artificial Intelligence in Business,
-        Fordham Gabelli School of Business (Dec 2027)
-      </p>
-      <div class="contact-row">
-        <a class="pill" href="mailto:jmt38@fordham.edu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-          jmt38@fordham.edu
-        </a>
-        <a class="pill" href="https://www.linkedin.com/in/josemarianotejada" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.7c0-1.6-.03-3.65-2.22-3.65-2.23 0-2.57 1.74-2.57 3.54V23h-4V8.5z"/></svg>
-          linkedin.com/in/josemarianotejada
-        </a>
-        <span class="pill" style="border-style:dashed">English · Español</span>
+      <div class="role">Business Operations &amp; Project Management</div>
+      <div class="contact">
+        New York, NY &nbsp;·&nbsp;
+        <a href="mailto:jmt38@fordham.edu">jmt38@fordham.edu</a> &nbsp;·&nbsp;
+        <a href="https://www.linkedin.com/in/josemarianotejada" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </header>
 
   <section class="about">
-    <div class="eyebrow">About</div>
+    <h2>About</h2>
     <p>
-      I turn budget chaos into a clean weekly report — three summers coordinating logistics, budgets
-      and stakeholder updates on a $65M road-infrastructure project taught me that good operations
-      work is mostly about keeping the right people informed at the right moment.
+      I'm a graduate student at Fordham University's Gabelli School of Business, pursuing a Master of
+      Science in Artificial Intelligence in Business (expected December 2027). I hold a B.S. in
+      International Business from Lynn University.
     </p>
     <p>
-      I came to the MSAIB program to add a real, working fluency in AI and data tools on top of that —
-      Python, Claude, ChatGPT — as a way to move faster and think more clearly, not as a career on its
-      own. I'm bilingual (English/Spanish), based in New York, and targeting business operations,
-      project management and strategy roles for Summer 2027.
+      My background is in project coordination and business operations. Over three summers at JT
+      Ingenierías in Guatemala City, I handled budget reporting, data analysis, and on-site logistics
+      for the Corredor Verde toll road, a $65 million infrastructure project. I use Excel, Python
+      (pandas), and AI tools such as Claude and ChatGPT to support that work.
+    </p>
+    <p>
+      I'm bilingual in English and Spanish, based in New York, and looking for Business Operations,
+      Project Management, and Strategy roles for Summer 2027.
     </p>
   </section>
 
   <section>
-    <div class="eyebrow">Experience</div>
+    <h2>Experience</h2>
 
-    <div class="tl-item">
-      <div class="tl-date">2024&nbsp;–&nbsp;2026</div>
-      <div>
-        <div class="tl-org">JT Ingenierías <span class="tl-loc">— Guatemala City, Guatemala</span></div>
-        <div class="tl-role">Project Coordinator / Data Analyst, Administrative Intern</div>
-        <ul>
-          <li>Compiled progress and budget reports and ran Excel-based analysis for three sections of the Corredor Verde toll road, a ~$65M infrastructure project, for the engineering and construction teams</li>
-          <li>Moved into on-site logistics and 3D-model review, pulling project status directly from field operations</li>
-          <li>Presented weekly project reports, compiled in PowerPoint, to my supervisor across all three summers</li>
-        </ul>
+    <div class="entry">
+      <div class="entry-row">
+        <div class="entry-org">JT Ingenierías <span class="entry-loc">— Guatemala City, Guatemala</span></div>
+        <div class="entry-date">2024 – 2026</div>
       </div>
+      <div class="entry-role">Project Coordinator / Data Analyst, Administrative Intern</div>
+      <ul>
+        <li>Compiled progress and budget reports and ran Excel-based analysis for three sections of the Corredor Verde toll road development, for the engineering and construction teams</li>
+        <li>Moved into on-site logistics and 3D-model review, pulling project status directly from field operations</li>
+        <li>Presented weekly project reports, compiled in PowerPoint, to my supervisor across all three summers</li>
+      </ul>
     </div>
 
-    <div class="tl-item">
-      <div class="tl-date">Aug 2025&nbsp;–&nbsp;May 2026</div>
-      <div>
-        <div class="tl-org">Lynn University Business &amp; Investment Club <span class="tl-loc">— Boca Raton, FL</span></div>
-        <div class="tl-role">Treasurer</div>
-        <ul>
-          <li>Oversaw the club's $5,000 university-allocated annual budget for events and activities</li>
-          <li>Supported growth to a peak of 93 members during my tenure</li>
-        </ul>
+    <div class="entry">
+      <div class="entry-row">
+        <div class="entry-org">Lynn University Business &amp; Investment Club <span class="entry-loc">— Boca Raton, FL</span></div>
+        <div class="entry-date">Aug 2025 – May 2026</div>
       </div>
+      <div class="entry-role">Treasurer</div>
+      <ul>
+        <li>Oversaw the club's $5,000 university-allocated annual budget for events and activities</li>
+        <li>Supported growth to a peak of 93 members during my tenure</li>
+      </ul>
     </div>
 
-    <div class="tl-item">
-      <div class="tl-date">Oct 2025&nbsp;–&nbsp;May 2026</div>
-      <div>
-        <div class="tl-org">Lynn University Admissions Office <span class="tl-loc">— Boca Raton, FL</span></div>
-        <div class="tl-role">Student Ambassador</div>
-        <ul>
-          <li>Engaged prospective students and families at admissions events, representing the university firsthand</li>
-        </ul>
+    <div class="entry">
+      <div class="entry-row">
+        <div class="entry-org">Lynn University Admissions Office <span class="entry-loc">— Boca Raton, FL</span></div>
+        <div class="entry-date">Oct 2025 – May 2026</div>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="eyebrow">Leadership &amp; Involvement</div>
-    <div class="inv-grid">
-      <div class="inv-card">
-        <span class="tag">Current</span>
-        <h3>Fordham Black &amp; Latinx Graduate Student Board</h3>
-        <div class="sub">Board Member, Organization &amp; Events · Sept 2026–Present</div>
-        <p>Coordinate and organize events and manage event logistics for Fordham's Black and Latinx graduate student community.</p>
-      </div>
-      <div class="inv-card">
-        <span class="tag">Volunteer</span>
-        <h3>Fundación Margarita Tejada</h3>
-        <div class="sub">Recreational &amp; Sports Activities · 2021</div>
-        <p>Facilitated play-based recreational programming for children with Down syndrome at a nonprofit serving 5,000+ families.</p>
-      </div>
+      <div class="entry-role">Student Ambassador</div>
+      <ul>
+        <li>Engaged prospective students and families at admissions events, representing the university firsthand</li>
+      </ul>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">Education</div>
-    <div class="tl-item">
-      <div class="tl-date">2026&nbsp;–&nbsp;2027</div>
-      <div>
-        <div class="tl-org">Fordham University, Gabelli School of Business <span class="tl-loc">— New York, NY</span></div>
-        <div class="tl-role">M.S., Artificial Intelligence in Business</div>
+    <h2>Leadership &amp; Involvement</h2>
+
+    <div class="entry">
+      <div class="entry-row">
+        <div class="entry-org">Fordham Black &amp; Latinx Graduate Student Board <span class="entry-loc">— New York, NY</span></div>
+        <div class="entry-date">Sept 2026 – Present</div>
       </div>
+      <div class="entry-role">Board Member, Organization &amp; Events</div>
+      <ul>
+        <li>Coordinate and organize events and manage event logistics for Fordham's Black and Latinx graduate student community</li>
+      </ul>
     </div>
-    <div class="tl-item">
-      <div class="tl-date">2022&nbsp;–&nbsp;2026</div>
-      <div>
-        <div class="tl-org">Lynn University <span class="tl-loc">— Boca Raton, FL</span></div>
-        <div class="tl-role">B.S., International Business</div>
+
+    <div class="entry">
+      <div class="entry-row">
+        <div class="entry-org">Fundación Margarita Tejada <span class="entry-loc">— Guatemala City, Guatemala</span></div>
+        <div class="entry-date">2021</div>
       </div>
+      <div class="entry-role">Recreational and Sports Activities Volunteer</div>
+      <ul>
+        <li>Facilitated recreational and educational engagement through play and sports for children with Down syndrome, at a nonprofit serving 5,000+ families</li>
+      </ul>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">Skills</div>
-    <div class="skill-row"><span>Tools</span><span>Excel (advanced), PowerPoint, Google Workspace</span></div>
-    <div class="skill-row"><span>AI &amp; analysis</span><span>Python (pandas), Claude, ChatGPT</span></div>
-    <div class="skill-row"><span>Languages</span><span>English (fluent), Spanish (native)</span></div>
-    <div class="skill-row"><span>Certifications</span><span>HBS Online — AI for Business · Python for Everybody, U. Michigan</span></div>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-row">
+        <div class="entry-org">Fordham University, Gabelli School of Business <span class="entry-loc">— New York, NY</span></div>
+        <div class="entry-date">Aug 2026 – Dec 2027</div>
+      </div>
+      <div class="entry-role">M.S., Artificial Intelligence in Business</div>
+    </div>
+    <div class="entry">
+      <div class="entry-row">
+        <div class="entry-org">Lynn University <span class="entry-loc">— Boca Raton, FL</span></div>
+        <div class="entry-date">Aug 2022 – May 2026</div>
+      </div>
+      <div class="entry-role">B.S., International Business</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl>
+      <div class="fact"><dt>Tools</dt><dd>Excel (advanced), PowerPoint, Google Workspace</dd></div>
+      <div class="fact"><dt>AI &amp; analysis</dt><dd>Python (pandas), Claude, ChatGPT</dd></div>
+      <div class="fact"><dt>Languages</dt><dd>English (fluent), Spanish (native)</dd></div>
+      <div class="fact"><dt>Certifications</dt><dd>HBS Online — AI for Business; Python for Everybody, University of Michigan</dd></div>
+    </dl>
   </section>
 
   <footer>
-    <span>José Mariano Tejada Castillo — New York, NY</span>
-    <span>Open to Summer 2027 opportunities</span>
+    José Mariano Tejada Castillo — New York, NY. Open to Summer 2027 opportunities.
   </footer>
 
 </div>
