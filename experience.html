@@ -33,9 +33,10 @@
   a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   h1{font-size:26px;font-weight:700;margin:0}
   h2{
-    font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-    margin:0 0 12px;padding-bottom:4px;border-bottom:1.5px solid var(--ink);
+    font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+    margin:0 0 12px;padding-bottom:5px;border-bottom:2px solid var(--ink);
   }
+  [hidden]{display:none!important}
 
   /* ---------- top bar (every page) ---------- */
   .topbar{
@@ -72,7 +73,7 @@
   .entry{padding:14px 0}
   .entry + .entry{border-top:1px solid var(--line)}
   .entry-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .entry-org{font-weight:700}
+  .entry-org{font-weight:700;font-size:15.5px}
   .entry-loc,.entry-date{color:var(--muted);font-size:14px;white-space:nowrap}
   .entry-role{font-style:italic;margin-top:1px}
   .entry ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}
@@ -87,9 +88,28 @@
     padding:10px 18px;border-radius:4px;border:1px solid var(--ink);color:var(--ink);
   }
   .btn.primary{background:var(--ink);color:var(--paper)}
+  .btn{cursor:pointer;background:none;font-family:inherit}
   .fact{display:flex;gap:14px;padding:6px 0;font-size:14.5px}
   .fact dt{flex:none;width:150px;color:var(--muted)}
   .fact dd{margin:0}
+
+  /* ---------- résumé pop-up viewer ---------- */
+  .modal-backdrop{
+    position:fixed;inset:0;background:rgba(0,0,0,.55);
+    display:flex;align-items:center;justify-content:center;padding:24px;z-index:50;
+  }
+  .modal{
+    background:var(--paper);width:100%;max-width:760px;height:86vh;
+    border-radius:6px;position:relative;box-shadow:0 16px 48px rgba(0,0,0,.35);
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  .modal iframe{flex:1;width:100%;border:0}
+  .modal-close{
+    position:absolute;top:8px;right:8px;width:30px;height:30px;
+    border:1px solid var(--line);background:var(--paper);color:var(--ink);
+    border-radius:4px;cursor:pointer;font-size:14px;z-index:2;line-height:1;
+  }
+  .modal-close:hover{border-color:var(--ink)}
 
   footer.site-footer{padding:30px 0 60px;font-size:13px;color:var(--muted)}
 </style>
@@ -126,6 +146,17 @@
         <li>Compiled progress and budget reports and ran Excel-based analysis for three sections of the Corredor Verde toll road development, a ~$65M infrastructure project, for the engineering and construction teams</li>
         <li>Moved into on-site logistics and 3D-model review in the third summer, pulling project status directly from field operations rather than solely through desk-based reporting</li>
         <li>Presented weekly project reports, compiled in PowerPoint, to my supervisor across all three summers to keep senior stakeholders informed</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-row">
+        <div class="entry-org">COVID-Era Microbusiness <span class="entry-loc">— Guatemala City, Guatemala</span></div>
+        <div class="entry-date">2020 – 2021</div>
+      </div>
+      <div class="entry-role">Independent Entrepreneur</div>
+      <ul>
+        <li>Co-managed a face mask and sweater venture during the pandemic</li>
+        <li>Oversaw budgeting, production sourcing, and direct sales strategy</li>
       </ul>
     </div>
     <div class="entry">
