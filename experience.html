@@ -45,7 +45,7 @@
 
   /* ---------- shell: sidebar + content ---------- */
   .shell{
-    max-width:1040px;margin:0 auto;padding:0 24px;
+    max-width:1180px;margin:0 auto;padding:0 24px;
     display:grid;grid-template-columns:240px 1fr;gap:48px;
     align-items:start;
   }
@@ -98,14 +98,20 @@
 
   /* ---------- entry cards ---------- */
   .card-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
   }
-  @media (max-width:640px){ .card-grid{grid-template-columns:1fr} }
+  .card-grid.two-col{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:900px){
+    .card-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:600px){
+    .card-grid,.card-grid.two-col{grid-template-columns:1fr}
+  }
 
   .entry{
-    background:var(--panel);
+    background:var(--accent-tint);
     border:1px solid var(--line);
-    border-left:4px solid var(--accent);
+    border-left:5px solid var(--accent);
     border-radius:8px;
     padding:0;
     transition:transform .16s ease, box-shadow .16s ease;
@@ -115,22 +121,22 @@
     .entry{transition:none} .entry:hover{transform:none}
   }
   .entry summary{
-    list-style:none;cursor:pointer;padding:16px 40px 16px 18px;
-    display:flex;flex-direction:column;gap:2px;position:relative;
+    list-style:none;cursor:pointer;padding:20px 44px 20px 22px;
+    display:flex;flex-direction:column;gap:3px;position:relative;
   }
   .entry summary::-webkit-details-marker{display:none}
   .entry summary::after{
-    content:"+";position:absolute;top:14px;right:16px;
-    font-size:18px;color:var(--muted);line-height:1;
+    content:"+";position:absolute;top:17px;right:18px;
+    font-size:20px;color:var(--muted);line-height:1;
   }
   .entry[open] summary::after{content:"–"}
-  .entry-org{font-weight:800;font-size:16.5px}
-  .entry-role{font-style:italic;color:var(--ink);font-size:14px;margin-top:1px}
-  .entry-meta{color:var(--muted);font-size:13px;margin-top:3px}
-  .entry-body{padding:0 18px 16px}
+  .entry-org{font-weight:800;font-size:18px}
+  .entry-role{font-style:italic;color:var(--ink);font-size:14.5px;margin-top:1px}
+  .entry-meta{color:var(--muted);font-size:13px;margin-top:4px}
+  .entry-body{padding:0 22px 20px}
   .entry-body ul{margin:0;padding-left:18px;font-size:14.5px}
   .entry-body li + li{margin-top:5px}
-  .entry-plain{padding:16px 18px}
+  .entry-plain{padding:20px 22px}
 
   /* ---------- resume page ---------- */
   .resume-tagline{color:var(--muted);margin-top:6px;max-width:60ch}
@@ -144,24 +150,8 @@
   .fact{display:flex;gap:14px;padding:6px 0;font-size:14.5px}
   .fact dt{flex:none;width:150px;color:var(--muted)}
   .fact dd{margin:0}
-
-  /* ---------- résumé pop-up viewer ---------- */
-  .modal-backdrop{
-    position:fixed;inset:0;background:rgba(0,0,0,.55);
-    display:flex;align-items:center;justify-content:center;padding:24px;z-index:50;
-  }
-  .modal{
-    background:var(--paper);width:100%;max-width:760px;height:86vh;
-    border-radius:6px;position:relative;box-shadow:0 16px 48px rgba(0,0,0,.35);
-    display:flex;flex-direction:column;overflow:hidden;
-  }
-  .modal iframe{flex:1;width:100%;border:0}
-  .modal-close{
-    position:absolute;top:8px;right:8px;width:30px;height:30px;
-    border:1px solid var(--line);background:var(--paper);color:var(--ink);
-    border-radius:4px;cursor:pointer;font-size:14px;z-index:2;line-height:1;
-  }
-  .modal-close:hover{border-color:var(--ink)}
+  .fact dd ul{margin:0;padding-left:16px}
+  .fact dd li + li{margin-top:3px}
 
   footer.site-footer{padding:20px 0 40px;font-size:13px;color:var(--muted)}
 </style>
