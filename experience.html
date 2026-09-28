@@ -99,14 +99,11 @@
 
   /* ---------- entry cards ---------- */
   .card-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+    display:grid;grid-template-columns:1fr;gap:14px;
   }
-  .card-grid.two-col{grid-template-columns:repeat(2,1fr)}
-  @media (max-width:900px){
-    .card-grid{grid-template-columns:repeat(2,1fr)}
-  }
+  .card-grid.two-col{grid-template-columns:repeat(2,1fr);gap:18px}
   @media (max-width:600px){
-    .card-grid,.card-grid.two-col{grid-template-columns:1fr}
+    .card-grid.two-col{grid-template-columns:1fr}
   }
 
   .entry{
@@ -135,7 +132,7 @@
   .entry-role{font-style:italic;color:var(--ink);font-size:14.5px;margin-top:1px}
   .entry-meta{color:var(--muted);font-size:13px;margin-top:4px}
   .entry-body{padding:0 22px 20px}
-  .entry-body ul{margin:0;padding-left:18px;font-size:14.5px}
+  .entry-body ul{margin:0;padding-left:18px;font-size:14.5px;max-width:72ch}
   .entry-body li + li{margin-top:5px}
   .entry-plain{padding:20px 22px}
 
