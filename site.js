@@ -19,6 +19,39 @@
     document.documentElement.addEventListener('pointerleave', function(){ spot.classList.remove('on'); });
   }
 
+  // Light/dark switch (remembers the choice when storage is available)
+  var btn = document.querySelector('.theme-toggle');
+  if (btn) {
+    var root = document.documentElement, dark = matchMedia('(prefers-color-scheme: dark)');
+    var current = function(){ return root.dataset.theme || (dark.matches ? 'dark' : 'light'); };
+    var paint = function(){
+      var next = current() === 'dark' ? 'light' : 'dark';
+      btn.querySelector('.tt-label').textContent = next === 'dark' ? 'Dark mode' : 'Light mode';
+      btn.querySelector('.tt-sun').hidden = next !== 'light';
+      btn.querySelector('.tt-moon').hidden = next !== 'dark';
+      btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.content = current() === 'dark' ? '#121212' : '#1F3A5F';
+    };
+    btn.addEventListener('click', function(){
+      root.dataset.theme = current() === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+      paint();
+    });
+    dark.addEventListener('change', paint);
+    paint();
+    btn.hidden = false;
+  }
+
+  // Card glow follows the cursor
+  document.querySelectorAll('.entry').forEach(function(c){
+    c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect();
+      c.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+    });
+  });
+
   if (reduce) return;
 
   // Smooth open/close for expandable cards
